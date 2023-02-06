@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Category from "./components/Category";
 import Intro from "./components/Intro";
-import { logDOM } from "@testing-library/react";
 
 const App = () => {
   const [data, setData] = useState();
