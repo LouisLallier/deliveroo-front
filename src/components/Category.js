@@ -18,7 +18,7 @@ const Category = ({ data }) => {
                         {meal.description}
                       </div>
                       <div className="flex gap-4">
-                        <div className="text-gray-500">{meal.price}</div>
+                        <div className="text-gray-500">{meal.price} €</div>
                         {meal.popular ? (
                           <div
                             className="flex
