@@ -10,7 +10,7 @@ const Intro = ({ data }) => {
       </div>
       <img
         className="h-[200px] rounded-md"
-        src={`${data.restaurant.picture}`}
+        src={data.restaurant.picture}
         alt=""
       />
     </div>
