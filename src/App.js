@@ -26,10 +26,10 @@ const App = () => {
   ) : (
     <div className="App">
       <Header />
-      <div className="container w-[820px]">
+      <div className="container  w-[820px]">
         <Intro data={data} />
       </div>
-      <div className="h-screen w-screen bg-gray-100">
+      <div className="min-h-full w-screen bg-gray-100">
         <Category data={data} />
       </div>
     </div>

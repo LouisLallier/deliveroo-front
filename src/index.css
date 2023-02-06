@@ -11,13 +11,12 @@
 
 .container {
   width: 1200px;
-  margin: 0 auto;
 }
 .main {
   width: 845px;
   margin-left: 360px;
 }
-
+button,
 html,
 body,
 span,

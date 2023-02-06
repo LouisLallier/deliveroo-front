@@ -11,16 +11,19 @@ const Category = ({ data }) => {
             <div className="flex flex-wrap gap-4">
               {category.meals.map((meal) => {
                 return (
-                  <div className="flex w-[400px] items-center justify-between rounded-md bg-white p-5">
-                    <div>
-                      <h3 className="text-xl">{meal.title}</h3>
-                      <div className="h-[40px] w-[220px] truncate text-sm">
+                  <button className="flex w-[400px] justify-between rounded-md bg-white p-5">
+                    <div className="flex h-full flex-col justify-between">
+                      <h3 className="text-start text-xl">{meal.title}</h3>
+                      <div className="h-[40px] w-[220px] truncate pt-2 text-start text-sm">
                         {meal.description}
                       </div>
                       <div className="flex gap-4">
                         <div className="text-gray-500">{meal.price}</div>
                         {meal.popular ? (
-                          <div className="flex items-center justify-center text-[#FC8002]">
+                          <div
+                            className="flex
+                           text-[#FC8002]"
+                          >
                             <i className="icon-STAR_FILL"></i>
                             <span className="pl-1 text-xs font-bold">
                               Populaire
@@ -32,13 +35,15 @@ const Category = ({ data }) => {
                     {meal.picture ? (
                       <div className="h-[130px] w-[130px]">
                         <img
-                          className="h-full w-full object-cover"
+                          className="h-full w-full rounded-md  object-cover"
                           src={meal.picture}
                           alt=""
                         />
                       </div>
-                    ) : null}
-                  </div>
+                    ) : (
+                      <div className="h-[130px] w-[130px]"></div>
+                    )}
+                  </button>
                 );
               })}
             </div>
