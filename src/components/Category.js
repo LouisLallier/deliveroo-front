@@ -4,14 +4,14 @@ const Category = ({ data }) => {
       {data.categories.map((category, index) => {
         console.log(category);
         return (
-          <div>
+          <div className="py-4">
             <h1 className="py-4 text-2xl font-bold text-gray-800">
               {category.name}
             </h1>
             <div className="flex flex-wrap gap-4">
               {category.meals.map((meal) => {
                 return (
-                  <button className="flex w-[400px] justify-between rounded-md bg-white p-5">
+                  <button className="flex w-[400px] justify-between rounded-md bg-white p-5 hover:shadow-md">
                     <div className="flex h-full flex-col justify-between">
                       <h3 className="text-start text-xl">{meal.title}</h3>
                       <div className="h-[40px] w-[220px] truncate pt-2 text-start text-sm">
