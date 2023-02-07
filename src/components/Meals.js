@@ -7,17 +7,30 @@ const Meal = ({ meal, cart, setCart }) => {
   return (
     <button
       onClick={() => {
-        if (!meal.quantity) {
-          const newMeal = { ...meal };
-          newMeal.quantity = 1;
-          cart.push(newMeal);
-          setCart(cart);
+        console.log(meal, "meal");
+        if (cart.length === 0) {
+          const newCart = [...cart];
+          meal.quantity = 1;
+          newCart.push(meal);
+          setCart(newCart);
         } else {
-          const newMeal = { ...meal };
-          newMeal.quantity++;
-          cart.push(newMeal);
-          setCart(cart);
+          cart.map((item) => {
+            if (item.id === meal.id) {
+              if (meal.quantity) {
+                const newCart = [...cart];
+                meal.quantity++;
+                newCart.push(meal);
+                setCart(newCart);
+              } else {
+                const newCart = [...cart];
+                meal.quantity = 1;
+                newCart.push(meal);
+                setCart(newCart);
+              }
+            }
+          });
         }
+
         console.log(cart);
       }}
       // onClick={() => {
