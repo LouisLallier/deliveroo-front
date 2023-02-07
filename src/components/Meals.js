@@ -1,39 +1,25 @@
-// import { useState } from "react";
-// import { addItem } from "../App";
-
 const Meal = ({ meal, cart, setCart }) => {
-  // const [quantity, setQuantity] = useState(0);
+  const isInCart =
+    cart?.filter((itemInCart) => itemInCart.id === meal.id).length > 0;
 
   return (
     <button
       onClick={() => {
-        console.log(meal, "meal");
-        if (cart.length === 0) {
-          const newCart = [...cart];
-          meal.quantity = 1;
-          newCart.push(meal);
-          setCart(newCart);
+        const newCart = [...cart];
+        if (!isInCart) {
+          newCart.push({ ...meal, quantity: 1 });
+          // const newCart = [...cart, { ...meal, quantity: 1 }];
         } else {
-          cart.map((item, index) => {
-            if (item.id === meal.id) {
-              if (meal.quantity) {
-                const newCart = [...cart];
-                meal.quantity++;
-                return setCart(newCart);
-              } else {
-                const newCart = [...cart];
-                meal.quantity = 1;
-                return setCart(newCart);
-              }
-            }
-          });
+          let itemIndex = cart.map((item) => item.id).indexOf(meal.id);
+          const itemToReplace = cart[itemIndex];
+          const newMeal = {
+            ...itemToReplace,
+            quantity: itemToReplace.quantity + 1,
+          };
+          newCart.splice(itemIndex, 1, newMeal);
         }
-
-        console.log(cart);
+        setCart(newCart);
       }}
-      // onClick={() => {
-      //   addItem(meal, quantity, cart, setQuantity, setCart);
-      // }}
       className="flex w-[400px] justify-between rounded-md bg-white p-5 hover:shadow-md"
     >
       <div className="flex h-full flex-col justify-between">

@@ -1,8 +1,6 @@
 import Meals from "./Meals";
 
 const Category = ({ category, cart, setCart }) => {
-  // console.log(data);
-
   return (
     <div className="py-4">
       <h1 className="py-4 text-2xl font-bold text-gray-800">{category.name}</h1>

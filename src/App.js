@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Category from "./components/Category";
 import Intro from "./components/Intro";
+import Cart from "./components/Cart";
 // export const addItem = (item, quantity, cart, funcQuantity, funcCart) => {
 //   const newTab = [...cart];
 //   if (quantity === 0) {
@@ -20,8 +21,6 @@ const App = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState([]);
-
-  console.log(cart);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,38 +56,7 @@ const App = () => {
             );
           })}
         </div>
-        <div className="Cart my my-[30px] flex max-h-[867px] w-[350px] flex-col items-center bg-white">
-          <button className="mt-2.5 h-[50px] w-[330px] rounded-md bg-[#3DCDBD]">
-            Valider mon panier
-          </button>
-          {cart[0] ? (
-            <div>
-              {cart.map((meal) => {
-                return (
-                  <div>
-                    {meal.id} ID{" "}
-                    <button
-                    // onClick={() => {
-                    //   if (!meal.quantity) {
-                    //     meal.quantity = 1;
-                    //     setCart(cart);
-                    //   } else {
-                    //     meal.quantity++;
-                    //     setCart(cart);
-                    //   }
-                    //   console.log(cart);
-                    // }}
-                    >
-                      +
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div>Votre Panier est vide</div>
-          )}
-        </div>
+        <Cart cart={cart} setCart={setCart} />
       </div>
     </div>
   );
