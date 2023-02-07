@@ -14,18 +14,16 @@ const Meal = ({ meal, cart, setCart }) => {
           newCart.push(meal);
           setCart(newCart);
         } else {
-          cart.map((item) => {
+          cart.map((item, index) => {
             if (item.id === meal.id) {
               if (meal.quantity) {
                 const newCart = [...cart];
                 meal.quantity++;
-                newCart.push(meal);
-                setCart(newCart);
+                return setCart(newCart);
               } else {
                 const newCart = [...cart];
                 meal.quantity = 1;
-                newCart.push(meal);
-                setCart(newCart);
+                return setCart(newCart);
               }
             }
           });
