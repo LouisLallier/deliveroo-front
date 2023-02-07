@@ -5,10 +5,10 @@ const Meal = ({ meal, cart, setCart }) => {
   return (
     <button
       onClick={() => {
-        const newCart = [...cart];
+        let newCart = [...cart];
         if (!isInCart) {
-          newCart.push({ ...meal, quantity: 1 });
-          // const newCart = [...cart, { ...meal, quantity: 1 }];
+          // const newCart.push({ ...meal, quantity: 1 }); la même chose que la ligne du dessus
+          newCart = [...cart, { ...meal, quantity: 1 }];
         } else {
           let itemIndex = cart.map((item) => item.id).indexOf(meal.id);
           const itemToReplace = cart[itemIndex];

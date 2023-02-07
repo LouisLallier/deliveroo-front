@@ -41,9 +41,9 @@ const Cart = ({ cart, setCart }) => {
       </button>
       {cart[0] ? (
         <div>
-          {cart.map((meal) => {
+          {cart.map((meal, index) => {
             return (
-              <div>
+              <div key={index}>
                 {meal.title} ID{" "}
                 <button
                   onClick={() => {
