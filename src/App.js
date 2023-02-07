@@ -3,19 +3,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Category from "./components/Category";
 import Intro from "./components/Intro";
-export const addItem = (item, quantity, cart, funcQuantity, funcCart) => {
-  const newTab = [...cart];
-  if (quantity === 0) {
-    funcQuantity(1);
-    item.quantity = quantity;
-    newTab.push(item);
-    funcCart(newTab);
-  } else {
-    item.quantity = quantity;
-    funcQuantity(item.quantity + 1);
-    funcCart(newTab);
-  }
-};
+// export const addItem = (item, quantity, cart, funcQuantity, funcCart) => {
+//   const newTab = [...cart];
+//   if (quantity === 0) {
+//     funcQuantity(1);
+//     item.quantity = quantity;
+//     newTab.push(item);
+//     funcCart(newTab);
+//   } else {
+//     item.quantity = quantity;
+//     funcQuantity(item.quantity + 1);
+//     funcCart(newTab);
+//   }
+// };
 const App = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -68,11 +68,16 @@ const App = () => {
                   <div>
                     {meal.id} ID{" "}
                     <button
-                      onClick={() => {
-                        const newMeal = { ...meal };
-                        newMeal.quantity++;
-                        //// PROBLEME
-                      }}
+                    // onClick={() => {
+                    //   if (!meal.quantity) {
+                    //     meal.quantity = 1;
+                    //     setCart(cart);
+                    //   } else {
+                    //     meal.quantity++;
+                    //     setCart(cart);
+                    //   }
+                    //   console.log(cart);
+                    // }}
                     >
                       +
                     </button>

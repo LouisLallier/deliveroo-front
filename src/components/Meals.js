@@ -1,14 +1,28 @@
-import { useState } from "react";
-import { addItem } from "../App";
+// import { useState } from "react";
+// import { addItem } from "../App";
 
 const Meal = ({ meal, cart, setCart }) => {
-  const [quantity, setQuantity] = useState(0);
+  // const [quantity, setQuantity] = useState(0);
 
   return (
     <button
       onClick={() => {
-        addItem(meal, quantity, cart, setQuantity, setCart);
+        if (!meal.quantity) {
+          const newMeal = { ...meal };
+          newMeal.quantity = 1;
+          cart.push(newMeal);
+          setCart(cart);
+        } else {
+          const newMeal = { ...meal };
+          newMeal.quantity++;
+          cart.push(newMeal);
+          setCart(cart);
+        }
+        console.log(cart);
       }}
+      // onClick={() => {
+      //   addItem(meal, quantity, cart, setQuantity, setCart);
+      // }}
       className="flex w-[400px] justify-between rounded-md bg-white p-5 hover:shadow-md"
     >
       <div className="flex h-full flex-col justify-between">
