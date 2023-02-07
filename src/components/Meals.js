@@ -1,25 +1,14 @@
 import { useState } from "react";
+import { addItem } from "../App";
 
 const Meal = ({ meal, cart, setCart }) => {
   const [quantity, setQuantity] = useState(0);
 
-  const addMeal = () => {
-    const newTab = [...cart];
-    if (quantity === 0) {
-      setQuantity(1);
-      meal.quantity = quantity;
-      newTab.push(meal);
-      setCart(newTab);
-    } else {
-      meal.quantity = quantity;
-      setQuantity(meal.quantity + 1);
-      setCart(newTab);
-    }
-  };
-
   return (
     <button
-      onClick={addMeal}
+      onClick={() => {
+        addItem(meal, quantity, cart, setQuantity, setCart);
+      }}
       className="flex w-[400px] justify-between rounded-md bg-white p-5 hover:shadow-md"
     >
       <div className="flex h-full flex-col justify-between">

@@ -3,10 +3,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Category from "./components/Category";
 import Intro from "./components/Intro";
-const addItem = (item, array, func) => {
-  const newTab = [...array];
-  newTab.push(item);
-  func(newTab);
+export const addItem = (item, quantity, cart, funcQuantity, funcCart) => {
+  const newTab = [...cart];
+  if (quantity === 0) {
+    funcQuantity(1);
+    item.quantity = quantity;
+    newTab.push(item);
+    funcCart(newTab);
+  } else {
+    item.quantity = quantity;
+    funcQuantity(item.quantity + 1);
+    funcCart(newTab);
+  }
 };
 const App = () => {
   const [data, setData] = useState();
@@ -56,7 +64,20 @@ const App = () => {
           {cart[0] ? (
             <div>
               {cart.map((meal) => {
-                return <div>{meal.id} ID</div>;
+                return (
+                  <div>
+                    {meal.id} ID{" "}
+                    <button
+                      onClick={() => {
+                        const newMeal = { ...meal };
+                        newMeal.quantity++;
+                        //// PROBLEME
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                );
               })}
             </div>
           ) : (
