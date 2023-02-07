@@ -13,8 +13,7 @@
   width: 1200px;
 }
 .main {
-  width: 845px;
-  margin-left: 360px;
+  padding-left: 360px;
 }
 button,
 html,

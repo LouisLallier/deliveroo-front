@@ -1,5 +1,6 @@
 const Intro = ({ data }) => {
   const { name, description, picture } = data.restaurant;
+  console.log(data);
   return (
     <div className="mb-8 ml-[360px] flex w-full justify-between">
       <div>
